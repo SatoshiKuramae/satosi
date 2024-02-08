@@ -8,7 +8,7 @@
 #include "title.h"
 #include "main.h"
 #include "fade.h"
-
+#include "tutorial.h"
 #define NUM_TITLE (3)
 #define MAX_COLOR (100.0f)
 //グローバル変数
@@ -20,11 +20,13 @@ int g_nCountAnimTitlebg;			//アニメーションカウンター
 int g_nPatternAnimTitlebg;		//アニメーションパターンNO.
 int T_g_nSelect = 0;	// 現在選択している選択肢
 
+
 //==============================
 //タイトル画面の初期化処理
 //==============================
 void InitTitle(void)
 {
+
 	T_g_nSelect = TITLEMENU_START;
 
 	LPDIRECT3DDEVICE9 pDevice;
@@ -137,6 +139,23 @@ void UninitTitle(void)
 void UpdateTitle(void)
 {
 	SetTitle();
+	/*if (g_NumPlayer.I_NumPlayer > 4)
+	{
+		g_NumPlayer.I_NumPlayer = 1;
+	}
+	if (g_NumPlayer.I_NumPlayer < 1)
+	{
+		g_NumPlayer.I_NumPlayer = 4;
+	}
+	if (GetKeyboardTrigger(DIK_RIGHT) == true)
+	{
+		g_NumPlayer.I_NumPlayer++;
+	}
+	else if (GetKeyboardTrigger(DIK_LEFT) == true)
+	{
+		g_NumPlayer.I_NumPlayer--;
+	}*/
+	
 
 	VERTEX_2D* pVtx;
 
@@ -201,6 +220,7 @@ void UpdateTitle(void)
 			SetFade(MODE_GAME);
 			break;
 		case TITLEMENU_TUTORIAL:
+			InitTutorial();
 			SetFade(MODE_TUTORIAL);
 			break;
 
@@ -251,3 +271,4 @@ void SetTitle(void)
 		}
 	}
 }
+

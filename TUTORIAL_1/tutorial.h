@@ -1,6 +1,7 @@
 #ifndef TUTORIAL_H_
 #define TUTORIAL_H_
 
+
 typedef struct
 {
 	int I_NumPlayer;
